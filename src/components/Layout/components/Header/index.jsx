@@ -27,32 +27,34 @@ function Header() {
         <div className={cx('logo')}>
           <img src={images.logo} alt="test" />
         </div>
-        <Tippy
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx('search-title')}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
+        <div>
+          <Tippy
+            interactive
+            visible={searchResult.length > 0}
+            render={(attrs) => (
+              <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                <PopperWrapper>
+                  <h4 className={cx('search-title')}>Accounts</h4>
+                  <AccountItem />
+                  <AccountItem />
+                  <AccountItem />
+                </PopperWrapper>
+              </div>
+            )}
+          >
+            <div className={cx('search')}>
+              <input type="text" placeholder="Search..." spellCheck={false} />
+              <button className={cx('clear')}>
+                <FontAwesomeIcon icon={faCircleXmark} />
+              </button>
+              {/* Loading */}
+              <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+              <button className={cx('search-btn')}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
             </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input type="text" placeholder="Search..." spellCheck={false} />
-            <button className={cx('clear')}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            {/* Loading */}
-            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-            <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </Tippy>
+          </Tippy>
+        </div>
         {/* <Tippy content="Tìm kiếm" placement="right">
             <button className={cx('search-btn')}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
