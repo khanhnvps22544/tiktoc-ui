@@ -25,7 +25,11 @@
 .title + .icon {
   margin-left: 8px;
 }
-
+.icon {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+}
 // Button types
 .round {
   color: rgba(22, 24, 35, 0.75);
