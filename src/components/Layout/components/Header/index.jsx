@@ -25,6 +25,8 @@ import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { MessagesIcon, InboxIcon, UploadIcon, SearchIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -128,37 +130,44 @@ function Header() {
               {/* Loading */}
               <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
               <button className={cx('search-btn')}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <SearchIcon />
               </button>
             </div>
           </HeadlessTippy>
         </div>
-        {/* <HeadlessTippy content="Tìm kiếm" placement="right">
-            <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </HeadlessTippy> */}
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
-                </button>
+              <Button className={cx('action-btn')} text leftIcon={<UploadIcon />}>
+                Upload
+              </Button>
+              <Tippy delay={[0, 200]} content="Messages" placement="bottom">
+                <div className={cx('message-btn')}>
+                  <MessagesIcon />
+                </div>
+              </Tippy>
+              <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                <div className={cx('inbox-btn')}>
+                  <span className={cx('inbox-icon')}>1</span>
+                  <InboxIcon />
+                </div>
               </Tippy>
             </>
           ) : (
             <>
-              <Button text>Upload</Button>
+              <Button text leftIcon={<UploadIcon />}>
+                Upload
+              </Button>
               <Button primary>Log in</Button>
             </>
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 className={cx('user-avatar')}
-                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/d209c5e4698b2bd075ed065043343ab0.jpeg?x-expires=1688497200&x-signature=0oUTr7qz5tcTwwJ8iu9ZnsV7i9k%3D"
+                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f2d8cc8a11412a34b11b671541fbf9d9~c5_100x100.jpeg?x-expires=1688576400&x-signature=tii2AgnknBZKD8rKA9A47pN7nE4%3D"
                 alt=""
+                // fallback="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tiktok-obj/1668778587889665.jpeg?x-expires=1688576400&x-signature=2wloPf%2FRmFAqVMtpiZzIYVVELms%3D"
               />
             ) : (
               <button className={cx('more-btn')}>
